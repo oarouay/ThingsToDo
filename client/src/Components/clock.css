@@ -1,0 +1,29 @@
+.clock{
+    width: 700px;
+    background:transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color:#fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+    display: flex;
+    justify-content: center;
+}
+.time-part{
+    font-size: 90px;
+    font-family: "Poppins", sans-serif;
+}
+.double{
+    font-size: 80px;
+    padding: 5px;
+}
+.tpart{
+    font-size: 90px;
+    padding: 5px;
+}
+.quote{
+    font-weight: 100;
+    font-size: 14px;
+    text-align: center;
+}
