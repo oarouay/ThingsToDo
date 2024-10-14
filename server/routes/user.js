@@ -284,8 +284,8 @@ router.post('/generate-todo', verifyUser, async (req, res) => {
     }
 
     const newList = {
-      name: `AI Generated: ${topic}`,
-      description: `AI-generated todo list about ${topic}`,
+      name: `${topic}`,
+      description: `todo list about ${topic}`,
       list: generatedTasks.map(task => ({
         title: task.title,
         completed: false
