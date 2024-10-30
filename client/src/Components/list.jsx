@@ -171,7 +171,7 @@ function List() {
             <button className='close-btn' onClick={() => setTaskPopup(false)}><X /></button>
             <h2>{selectedTask.title}</h2>
             <p>Completed: {selectedTask.completed ? 'Yes' : 'No'}</p>
-            <button onClick={() => handleToggleTaskCompletion(selectedTask)}>
+            <button className='button-18' onClick={() => handleToggleTaskCompletion(selectedTask)}>
               Mark as {selectedTask.completed ? 'Not Completed' : 'Completed'}
             </button>
           </div>
