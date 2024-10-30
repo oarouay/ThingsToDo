@@ -8,6 +8,10 @@ This is the login screen where users can enter their credentials to access the a
 ![Signup Screen](GIThub/signup.png)
 New users can create an account on this signup screen.
 
+## Forget Password Screen
+![Signup Screen](GIThub/Fpass.png)
+New users can create an account on this signup screen.
+
 ## Home Screen
 ![Home Screen](GIThub/homepage.png)
 The home screen provides an overview of the user's tasks and quick access to main features.
