@@ -1,7 +1,7 @@
 # MyTodoApp Screenshots
 
 ## Login Screen
-![Login Screen](GIThub\login.png)
+![Login Screen](GIThub/login.png)
 This is the login screen where users can enter their credentials to access the app.
 
 ## Signup Screen
