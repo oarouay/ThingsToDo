@@ -10,7 +10,6 @@ New users can create an account on this signup screen.
 
 ## Forget Password Screen
 ![Signup Screen](GIThub/Fpass.png)
-New users can create an account on this signup screen.
 
 ## Home Screen
 ![Home Screen](GIThub/homepage.png)
