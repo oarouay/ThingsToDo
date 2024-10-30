@@ -4,7 +4,6 @@ import Login from './Components/login'
 import Home from './Components/home'
 import ForgetPassword from './Components/forgetPassword'
 import ResetPassword from './Components/resetPassword'
-import Dashboard from './Components/dashboard'
 import List from './Components/list'
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/forgetPassword" element={<ForgetPassword />} />
         <Route path="/resetPassword/:token" element={<ResetPassword />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/list" element={<List />} />
       </Routes>
     </BrowserRouter>

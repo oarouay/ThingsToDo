@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import './list.css';
 import AddList from './addlist';
 import { X } from 'lucide-react';
 import './sup.css';
-
+import {fetchUserTodos} from '../Service/GetTodoList'
 function List() {
   const [showPopup, setShowPopup] = useState(false);
   const [todoLists, setTodoLists] = useState([]);
@@ -20,27 +20,17 @@ function List() {
 
   Axios.defaults.withCredentials = true;
 
+  const loadTodos = async () => {
+    const result = await fetchUserTodos();
+    if (result.success) {
+      setTodoLists(result.data);
+    } else {
+      console.error(result.error);
+    }
+  };
   useEffect(() => {
-    const fetchData = () => {
-      Axios.get("http://localhost:3000/auth/todos")
-        .then(response => {
-          if (response.data.status) {
-            setTodoLists(response.data.todoLists);
-          } else {
-            console.error("Failed to fetch to-do lists");
-          }
-        })
-        .catch(error => {
-          console.error("Error fetching to-do lists:", error);
-        });
-    };
-
-    fetchData();
-    const intervalId = setInterval(fetchData, 500);
-
-    return () => clearInterval(intervalId);
+    loadTodos();
   }, []);
-
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
@@ -55,6 +45,7 @@ function List() {
   };
 
   const handleAddTask = () => {
+
     if (!selectedList) return;
 
     Axios.post(`http://localhost:3000/auth/todo/${selectedList._id}/task`, {
@@ -62,12 +53,8 @@ function List() {
     })
       .then(response => {
         if (response.data.status) {
-          const updatedLists = todoLists.map(list =>
-            list._id === selectedList._id
-              ? { ...list, list: [...list.list, response.data.task] }
-              : list
-          );
-          setTodoLists(updatedLists);
+          loadTodos();
+          setSelectedList(todoLists.find(todo => todo._id === selectedList._id))
           setTaskTitle('');
         } else {
           console.error("Failed to add task");
@@ -84,16 +71,8 @@ function List() {
     })
       .then(response => {
         if (response.data.status) {
-          const updatedLists = todoLists.map(list => {
-            if (list._id === selectedList._id) {
-              return {
-                ...list,
-                list: list.list.map(t => t._id === task._id ? response.data.task : t),
-              };
-            }
-            return list;
-          });
-          setTodoLists(updatedLists);
+          loadTodos();
+          setSelectedList(todoLists.find(todo => todo._id === selectedList._id))
           setTaskPopup(false);
         } else {
           console.error("Failed to update task");
